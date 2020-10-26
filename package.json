@@ -1,0 +1,15 @@
+{
+  "name": "test-concesionario",
+  "version": "1.0.0",
+  "description": "Test BAM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "node.js"
+  ],
+  "author": "Juan Jose Hernandez",
+  "license": "ISC"
+}
