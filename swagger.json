@@ -1,0 +1,1349 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Documentacion de la api del proyecto",
+    "version": "1.0.0",
+    "title": "Api test BAM",
+    "contact": {
+      "email": "ju16jo@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "description": "Url Desarrollo",
+      "url": "https://api.smartdevs.com.gt/bam/"
+    },
+    {
+      "description": "Url local de prueba",
+      "url": "http://localhost:3400/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "AD-Usuarios",
+      "description": "Usuarios"
+    },
+    {
+      "name": "AD-Empresas",
+      "description": "Empresas"
+    },
+    {
+      "name": "TC-Personas",
+      "description": "Personas"
+    },
+    {
+      "name": "TC-Cotizacion",
+      "description": "Cotizacion"
+    },
+    {
+      "name": "TC-Departamento",
+      "description": "Departamento"
+    },
+    {
+      "name": "TC-Localizador",
+      "description": "Localizador"
+    },
+    {
+      "name": "TC-Municipio",
+      "description": "municipio"
+    },
+    {
+      "name": "TC-Vehiculo",
+      "description": "vehiculo"
+    }
+  ],
+  "paths": {
+    "/empresas": {
+      "post": {
+        "tags": ["AD-Empresas"],
+        "summary": "Crear un empresa",
+        "description": "Crear un empresa",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ad_empresas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      },
+      "get": {
+        "tags": ["AD-Empresas"],
+        "summary": "Crear un empres",
+        "description": "Crear un empresa",
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      }
+    },
+    "/empresas{Id}": {
+      "get": {
+        "tags": ["AD-Empresas"],
+        "summary": "Obtiene una empresa",
+        "description": "Obtiene una empresa",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      },
+      "put": {
+        "tags": ["AD-Empresas"],
+        "summary": "Modificar empresa",
+        "description": "Esto solo puede ser realizado por un usuario autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ad_empresas"
+              }
+            }
+          },
+          "description": "actualizar entidad"
+        },
+        "responses": {
+          "400": {
+            "description": "Id invalido"
+          },
+          "404": {
+            "description": "empresa no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["AD-Empresas"],
+        "summary": "Eliminar Empresa",
+        "description": "Esto solo puede ser realizado por un usuario autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "El id de funcion_accion a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id invalido"
+          },
+          "404": {
+            "description": "id no encontrado"
+          }
+        }
+      }
+    },
+    "/usuarios/auth": {
+      "post": {
+        "tags": ["AD-Usuarios"],
+        "summary": "inicio de session",
+        "description": "Ingreso al la autenticacion de clientes",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ad_auth"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      }
+    },
+    "/usuarios": {
+      "post": {
+        "tags": ["AD-Usuarios"],
+        "summary": "Crear un empresa",
+        "description": "Crear un empresa",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ad_usuarios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      },
+      "get": {
+        "tags": ["AD-Usuarios"],
+        "summary": "Crear un empres",
+        "description": "Crear un empresa",
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      }
+    },
+    "/usuarios{Id}": {
+      "get": {
+        "tags": ["AD-Usuarios"],
+        "summary": "Obtiene una empresa",
+        "description": "Obtiene una empresa",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      },
+      "put": {
+        "tags": ["AD-Usuarios"],
+        "summary": "Modificar empresa",
+        "description": "Esto solo puede ser realizado por un usuario autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ad_usuarios"
+              }
+            }
+          },
+          "description": "actualizar entidad"
+        },
+        "responses": {
+          "400": {
+            "description": "Id invalido"
+          },
+          "404": {
+            "description": "empresa no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["AD-Usuarios"],
+        "summary": "Eliminar Empresa",
+        "description": "Esto solo puede ser realizado por un usuario autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "El id de funcion_accion a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id invalido"
+          },
+          "404": {
+            "description": "id no encontrado"
+          }
+        }
+      }
+    },
+    "/personas": {
+      "post": {
+        "tags": ["TC-Personas"],
+        "summary": "Crear un empresa",
+        "description": "Crear un empresa",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_personas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      },
+      "get": {
+        "tags": ["TC-Personas"],
+        "summary": "Crear un empres",
+        "description": "Crear un empresa",
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      }
+    },
+    "/personas{Id}": {
+      "get": {
+        "tags": ["TC-Personas"],
+        "summary": "Obtiene una empresa",
+        "description": "Obtiene una empresa",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "Usuario sin autorizacion"
+          }
+        }
+      },
+      "put": {
+        "tags": ["TC-Personas"],
+        "summary": "Modificar empresa",
+        "description": "Esto solo puede ser realizado por un usuario autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_personas"
+              }
+            }
+          },
+          "description": "actualizar entidad"
+        },
+        "responses": {
+          "400": {
+            "description": "Id invalido"
+          },
+          "404": {
+            "description": "empresa no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["TC-Personas"],
+        "summary": "Eliminar Empresa",
+        "description": "Esto solo puede ser realizado por un usuario autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "El id de funcion_accion a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id invalido"
+          },
+          "404": {
+            "description": "id no encontrado"
+          }
+        }
+      }
+    },
+    "/cotizacion": {
+      "post": {
+        "tags": ["TC-Cotizacion"],
+        "summary": "Crear un empresa",
+        "description": "Crear un empresa",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_cotizacion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "cotizacion sin autorizacion"
+          }
+        }
+      },
+      "get": {
+        "tags": ["TC-Cotizacion"],
+        "summary": "Crear un empres",
+        "description": "Crear un empresa",
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "cotizacion sin autorizacion"
+          }
+        }
+      }
+    },
+    "/cotizacion{Id}": {
+      "get": {
+        "tags": ["TC-Cotizacion"],
+        "summary": "Obtiene una empresa",
+        "description": "Obtiene una empresa",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "cotizacion sin autorizacion"
+          }
+        }
+      },
+      "put": {
+        "tags": ["TC-Cotizacion"],
+        "summary": "Modificar empresa",
+        "description": "Esto solo puede ser realizado por un cotizacion autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_cotizacion"
+              }
+            }
+          },
+          "description": "actualizar entidad"
+        },
+        "responses": {
+          "400": {
+            "description": "Id invalido"
+          },
+          "404": {
+            "description": "empresa no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["TC-Cotizacion"],
+        "summary": "Eliminar Empresa",
+        "description": "Esto solo puede ser realizado por un cotizacion autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "El id de funcion_accion a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id invalido"
+          },
+          "404": {
+            "description": "id no encontrado"
+          }
+        }
+      }
+    },
+    "/departamento": {
+      "post": {
+        "tags": ["TC-Departamento"],
+        "summary": "Crear un departamento",
+        "description": "Crear un departamento",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_departamento"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "departamento sin autorizacion"
+          }
+        }
+      },
+      "get": {
+        "tags": ["TC-Departamento"],
+        "summary": "Crear un empres",
+        "description": "Crear un departamento",
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "departamento sin autorizacion"
+          }
+        }
+      }
+    },
+    "/departamento{Id}": {
+      "get": {
+        "tags": ["TC-Departamento"],
+        "summary": "Obtiene una departamento",
+        "description": "Obtiene una departamento",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "departamento sin autorizacion"
+          }
+        }
+      },
+      "put": {
+        "tags": ["TC-Departamento"],
+        "summary": "Modificar departamento",
+        "description": "Esto solo puede ser realizado por un departamento autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_departamento"
+              }
+            }
+          },
+          "description": "actualizar entidad"
+        },
+        "responses": {
+          "400": {
+            "description": "Id invalido"
+          },
+          "404": {
+            "description": "departamento no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["TC-Departamento"],
+        "summary": "Eliminar departamento",
+        "description": "Esto solo puede ser realizado por un departamento autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "El id de funcion_accion a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id invalido"
+          },
+          "404": {
+            "description": "id no encontrado"
+          }
+        }
+      }
+    },
+    "/localizador": {
+      "post": {
+        "tags": ["TC-Localizador"],
+        "summary": "Crear un localizador",
+        "description": "Crear un localizador",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_localizador"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "localizador sin autorizacion"
+          }
+        }
+      },
+      "get": {
+        "tags": ["TC-Localizador"],
+        "summary": "Crear un empres",
+        "description": "Crear un localizador",
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "localizador sin autorizacion"
+          }
+        }
+      }
+    },
+    "/localizador{Id}": {
+      "get": {
+        "tags": ["TC-Localizador"],
+        "summary": "Obtiene una localizador",
+        "description": "Obtiene una localizador",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "localizador sin autorizacion"
+          }
+        }
+      },
+      "put": {
+        "tags": ["TC-Localizador"],
+        "summary": "Modificar localizador",
+        "description": "Esto solo puede ser realizado por un localizador autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_localizador"
+              }
+            }
+          },
+          "description": "actualizar entidad"
+        },
+        "responses": {
+          "400": {
+            "description": "Id invalido"
+          },
+          "404": {
+            "description": "localizador no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["TC-Localizador"],
+        "summary": "Eliminar localizador",
+        "description": "Esto solo puede ser realizado por un localizador autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "El id de funcion_accion a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id invalido"
+          },
+          "404": {
+            "description": "id no encontrado"
+          }
+        }
+      }
+    },
+    "/municipio": {
+      "post": {
+        "tags": ["TC-Municipio"],
+        "summary": "Crear un municipio",
+        "description": "Crear un municipio",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_municipio"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "municipio sin autorizacion"
+          }
+        }
+      },
+      "get": {
+        "tags": ["TC-Municipio"],
+        "summary": "Crear un empres",
+        "description": "Crear un municipio",
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "municipio sin autorizacion"
+          }
+        }
+      }
+    },
+    "/municipio{Id}": {
+      "get": {
+        "tags": ["TC-Municipio"],
+        "summary": "Obtiene una municipio",
+        "description": "Obtiene una municipio",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "municipio sin autorizacion"
+          }
+        }
+      },
+      "put": {
+        "tags": ["TC-Municipio"],
+        "summary": "Modificar municipio",
+        "description": "Esto solo puede ser realizado por un municipio autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_municipio"
+              }
+            }
+          },
+          "description": "actualizar entidad"
+        },
+        "responses": {
+          "400": {
+            "description": "Id invalido"
+          },
+          "404": {
+            "description": "municipio no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["TC-Municipio"],
+        "summary": "Eliminar municipio",
+        "description": "Esto solo puede ser realizado por un municipio autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "El id de funcion_accion a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id invalido"
+          },
+          "404": {
+            "description": "id no encontrado"
+          }
+        }
+      }
+    },
+    "/vehiculo": {
+      "post": {
+        "tags": ["TC-Vehiculo"],
+        "summary": "Crear un vehiculo",
+        "description": "Crear un vehiculo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_vehiculo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "vehiculo sin autorizacion"
+          }
+        }
+      },
+      "get": {
+        "tags": ["TC-Vehiculo"],
+        "summary": "Crear un empres",
+        "description": "Crear un vehiculo",
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "vehiculo sin autorizacion"
+          }
+        }
+      }
+    },
+    "/vehiculo{Id}": {
+      "get": {
+        "tags": ["TC-Vehiculo"],
+        "summary": "Obtiene una vehiculo",
+        "description": "Obtiene una vehiculo",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "operacion exitosa"
+          },
+          "401": {
+            "description": "vehiculo sin autorizacion"
+          }
+        }
+      },
+      "put": {
+        "tags": ["TC-Vehiculo"],
+        "summary": "Modificar vehiculo",
+        "description": "Esto solo puede ser realizado por un vehiculo autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tc_vehiculo"
+              }
+            }
+          },
+          "description": "actualizar entidad"
+        },
+        "responses": {
+          "400": {
+            "description": "Id invalido"
+          },
+          "404": {
+            "description": "vehiculo no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["TC-Vehiculo"],
+        "summary": "Eliminar vehiculo",
+        "description": "Esto solo puede ser realizado por un vehiculo autenticado y que tenga los privilegios requeridos.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "El id de funcion_accion a ser eliminado",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id invalido"
+          },
+          "404": {
+            "description": "id no encontrado"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "description": "pegar unicamente el token generado en el login, \"Bearer\" se concatenara automaticamente",
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "ad_empresas": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Nombre": {
+            "type": "string"
+          },
+          "RazonSocial": {
+            "type": "string"
+          },
+          "Tipo": {
+            "type": "string"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "TCPersonaId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ad_usuarios": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "Usuario": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "TCPersonaId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ad_auth": {
+        "type": "object",
+        "properties": {
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "Usuario": {
+            "type": "string"
+          },
+          "Password": {
+            "type": "string"
+          }
+        }
+      },
+      "tc_cotizacion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Ingresos": {
+            "type": "number"
+          },
+          "Precio": {
+            "type": "number"
+          },
+          "AniosAntiguedad": {
+            "type": "integer"
+          },
+          "PersonasCargo": {
+            "type": "integer"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "ADEmpresaId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "TCVehiculoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "TCClienteId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "TCAgenteId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "tc_departamento": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Nombre": {
+            "type": "string"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          }
+        }
+      },
+      "tc_localizador": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Localizador": {
+            "type": "string"
+          },
+          "Tipo": {
+            "type": "string"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "TCPersonaId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "tc_municipio": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Nombre": {
+            "type": "string"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "TCDepartamentoId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "tc_personas": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Nombres": {
+            "type": "string"
+          },
+          "Apellidos": {
+            "type": "string"
+          },
+          "Tipo": {
+            "type": "string"
+          },
+          "Nacimiento": {
+            "type": "string",
+            "format": "date"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          }
+        }
+      },
+      "tc_vehiculo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Marca": {
+            "type": "integer"
+          },
+          "Anio": {
+            "type": "integer"
+          },
+          "Puertas": {
+            "type": "integer"
+          },
+          "Tracccion": {
+            "type": "string"
+          },
+          "Tipo": {
+            "type": "string"
+          },
+          "Estado": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "ADEmpresaId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    }
+  }
+}
