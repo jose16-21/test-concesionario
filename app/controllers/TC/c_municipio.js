@@ -15,9 +15,7 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     Minicipio.findAndCountAll({
-        where: {
-            ADEmpresaId: req.userData.ADEmpresaId,
-        },
+
 
         order: [["createdAt", "DESC"]],
     })

@@ -6,12 +6,13 @@ const {
     deleteUsuario,
     update,
     findAll,
-    create
+    create,
+    user_login
 } = require('../../controllers/AD/c_usuario');
 
 
 router.use(checkAuth);
-
+router.post('/auth', user_login);
 router
     .route('/:Id')
     .get(findById)

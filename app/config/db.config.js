@@ -16,11 +16,11 @@ sequelize.options.logging = false;
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.sequelize.sync({ force: true }).then(() => {
-    console.log("Generado exitosamente");
-}).catch(error => {
-    console.log(error.message);
-});
+// db.sequelize.sync({ force: true }).then(() => {
+//     console.log("Generado exitosamente");
+// }).catch(error => {
+//     console.log(error.message);
+// });
 
 /**Models Administrations**/
 db.Usuario = require("../models/AD/m_usuario")(sequelize, Sequelize);
@@ -94,5 +94,5 @@ db.Cotizacion.belongsTo(db.Persona, {
     foreignKey: { name: "TCAgenteId", allowNull: true },
 });
 
-
+module.exports = db;
 

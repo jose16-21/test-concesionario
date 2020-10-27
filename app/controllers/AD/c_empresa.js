@@ -15,9 +15,7 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     Empresa.findAndCountAll({
-        where: {
-            ADEmpresaId: req.userData.ADEmpresaId,
-        },
+
 
         order: [["createdAt", "DESC"]],
     })

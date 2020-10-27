@@ -4,7 +4,7 @@ const express = require('express');
 
 const cors = require('cors');
 const app = express();
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // const morgan = require('morgan');
 var favicon = require('serve-favicon');
 var path = require('path');
@@ -17,8 +17,8 @@ app.use(cors());
 //     app.use(morgan('dev'));
 // }
 
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 /**
  * Configuracion de swagger
  */

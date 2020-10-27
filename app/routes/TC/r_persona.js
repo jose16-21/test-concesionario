@@ -10,7 +10,7 @@ const {
 } = require('../../controllers/TC/c_persona');
 
 
-router.use(checkAuth);
+//router.use(checkAuth);
 
 router
     .route('/:Id')

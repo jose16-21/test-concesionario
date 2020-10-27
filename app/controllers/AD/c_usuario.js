@@ -1,7 +1,51 @@
 const db = require("../../config/db.config");
 const Usuario = db.Usuario;
+const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+exports.user_login = (req, res, next) => {
+    Usuario.findOne({
+        where: { Email: req.body.Email },
+    })
+        .then((user) => {
+            if (user) {
+                bcryptjs.compare(req.body.Password, user.Password, (err, result) => {
+                    if (err) {
+                        return res.status(401).json({
+                            message: "Auth failed",
+                        });
+                    }
+                    if (result) {
+                        const token = jwt.sign(
+                            {
+                                Email: user.Email,
+                                UserId: user.id,
+                            },
+                            process.env.JWT_KEY,
+                            { expiresIn: process.env.TTEXPIRA + "h" }
+                        );
+
+                        return res.status(200).json({
+                            message: "Auth successful",
+                            token: token,
+                        });
+                    }
+                    res.status(401).json({
+                        message: "Auth failed",
+                    });
+                });
+            } else {
+                res.status(404).json({ message: "Auth failed" });
+            }
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        });
+};
 
 exports.create = (req, res) => {
+
+    req.body.Password = bcryptjs.hashSync(req.body.Password, bcryptjs.genSaltSync(8));
     Usuario.create(req.body)
         .then((Response) => {
             res.status(200).json(Response);
@@ -12,13 +56,8 @@ exports.create = (req, res) => {
 };
 
 
-
 exports.findAll = (req, res) => {
     Usuario.findAndCountAll({
-        where: {
-            ADEmpresaId: req.userData.ADEmpresaId,
-        },
-
         order: [["createdAt", "DESC"]],
     })
         .then((response) => {

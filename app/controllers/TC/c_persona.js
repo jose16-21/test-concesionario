@@ -2,6 +2,7 @@ const db = require("../../config/db.config");
 const Persona = db.Persona;
 
 exports.create = (req, res) => {
+    console.log(req.body)
     Persona.create(req.body)
         .then((Response) => {
             res.status(200).json(Response);
@@ -15,10 +16,6 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     Persona.findAndCountAll({
-        where: {
-            ADEmpresaId: req.userData.ADEmpresaId,
-        },
-
         order: [["createdAt", "DESC"]],
     })
         .then((response) => {
