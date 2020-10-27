@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  test-image:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: test-image
+    container_name: test-api-container
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "4800:3400"
