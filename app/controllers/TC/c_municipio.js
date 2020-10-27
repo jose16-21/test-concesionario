@@ -1,8 +1,8 @@
 const db = require("../../config/db.config");
-const Minicipio = db.Minicipio;
+const Municipio = db.Municipio;
 
 exports.create = (req, res) => {
-    Minicipio.create(req.body)
+    Municipio.create(req.body)
         .then((Response) => {
             res.status(200).json(Response);
         })
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
 
 
 exports.findAll = (req, res) => {
-    Minicipio.findAndCountAll({
+    Municipio.findAndCountAll({
 
 
         order: [["createdAt", "DESC"]],
@@ -29,7 +29,7 @@ exports.findAll = (req, res) => {
 
 
 exports.findById = (req, res) => {
-    Minicipio.findByPk(req.params.Id)
+    Municipio.findByPk(req.params.Id)
         .then((response) => {
             res.status(200).json(response);
         })
@@ -40,7 +40,7 @@ exports.findById = (req, res) => {
 
 
 exports.update = (req, res) => {
-    Minicipio.update(req.body, { where: { id: req.params.Id } })
+    Municipio.update(req.body, { where: { id: req.params.Id } })
         .then((response) => {
             res.status(200).json(response);
         })
@@ -49,15 +49,15 @@ exports.update = (req, res) => {
         });
 };
 
-exports.deleteMinicipio = (req, res) => {
+exports.deleteMunicipio = (req, res) => {
     const id = req.params.Id;
-    Minicipio.destroy({
-        where: { id: id },
+    Municipio.destroy({
+        where: { id: id }
     })
         .then((response) => {
-            handle.respuestaDelete(res, response);
+            res.status(200).json(response);
         })
         .catch((err) => {
-            handle.ErrorDelete(res, err);
+            res.status(500).json(err);
         });
 };

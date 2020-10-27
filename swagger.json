@@ -91,7 +91,7 @@
         }
       }
     },
-    "/empresas{Id}": {
+    "/empresas/{Id}": {
       "get": {
         "tags": ["AD-Empresas"],
         "summary": "Obtiene una empresa",
@@ -237,7 +237,7 @@
         }
       }
     },
-    "/usuarios{Id}": {
+    "/usuarios/{Id}": {
       "get": {
         "tags": ["AD-Usuarios"],
         "summary": "Obtiene una empresa",
@@ -358,7 +358,7 @@
         }
       }
     },
-    "/personas{Id}": {
+    "/personas/{Id}": {
       "get": {
         "tags": ["TC-Personas"],
         "summary": "Obtiene una empresa",
@@ -479,7 +479,7 @@
         }
       }
     },
-    "/cotizacion{Id}": {
+    "/cotizacion/{Id}": {
       "get": {
         "tags": ["TC-Cotizacion"],
         "summary": "Obtiene una empresa",
@@ -600,7 +600,7 @@
         }
       }
     },
-    "/departamento{Id}": {
+    "/departamento/{Id}": {
       "get": {
         "tags": ["TC-Departamento"],
         "summary": "Obtiene una departamento",
@@ -721,7 +721,7 @@
         }
       }
     },
-    "/localizador{Id}": {
+    "/localizador/{Id}": {
       "get": {
         "tags": ["TC-Localizador"],
         "summary": "Obtiene una localizador",
@@ -842,7 +842,7 @@
         }
       }
     },
-    "/municipio{Id}": {
+    "/municipio/{Id}": {
       "get": {
         "tags": ["TC-Municipio"],
         "summary": "Obtiene una municipio",
@@ -963,7 +963,7 @@
         }
       }
     },
-    "/vehiculo{Id}": {
+    "/vehiculo/{Id}": {
       "get": {
         "tags": ["TC-Vehiculo"],
         "summary": "Obtiene una vehiculo",
