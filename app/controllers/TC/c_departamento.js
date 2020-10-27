@@ -52,12 +52,12 @@ exports.update = (req, res) => {
 exports.deleteDepartamento = (req, res) => {
     const id = req.params.Id;
     Departamento.destroy({
-        where: { id: id },
+        where: { id: id }
     })
         .then((response) => {
-            handle.respuestaDelete(res, response);
+            res.status(200).json(response);
         })
         .catch((err) => {
-            handle.ErrorDelete(res, err);
+            res.status(500).json(err);
         });
 };

@@ -54,9 +54,9 @@ exports.deletePersona = (req, res) => {
         where: { id: id },
     })
         .then((response) => {
-            handle.respuestaDelete(res, response);
+            res.status(200).json(response);
         })
         .catch((err) => {
-            handle.ErrorDelete(res, err);
+            res.status(500).json(err);
         });
 };

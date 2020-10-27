@@ -3,7 +3,7 @@ const checkAuth = require('../../midleware/checkout');
 const router = express.Router();
 const {
     findById,
-    deleteMinicipio,
+    deleteMunicipio,
     update,
     findAll,
     create
@@ -15,7 +15,7 @@ router.use(checkAuth);
 router
     .route('/:Id')
     .get(findById)
-    .delete(deleteMinicipio)
+    .delete(deleteMunicipio)
     .put(update);
 
 router
