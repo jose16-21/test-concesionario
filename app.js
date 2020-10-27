@@ -35,8 +35,8 @@ var corsOptions = {
   }
 }
 app.use(cors(corsOptions));*/
-//var routes = require('./app/routes/index');
-//app.use('/', routes);
+var routes = require('./app/routes/index');
+app.use('/', routes);
 
 app.use((req, res, net) => {
   const error = new Error('Not Found');
